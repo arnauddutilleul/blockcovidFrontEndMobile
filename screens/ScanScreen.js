@@ -1,18 +1,11 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     TouchableOpacity,
-    Linking,
-    SafeAreaView,
-    ScrollView,
-    View,
-    StatusBar,
-    Button
 } from 'react-native';
 
 
