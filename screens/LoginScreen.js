@@ -16,12 +16,28 @@ import {
 
 const LoginScreen = ({navigation}) => {
     return(
-        <Button
-            title="Go to Scan Screen"
-            onPress={() =>
+        <View
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: 40,
+            }}>
+                
+            <Button
+                title="Go to Scan Screen"
+                onPress={() =>
                 navigation.navigate('Scan', { name: 'Brandon' })
             }
-        />
+            />
+
+        </View>
+
+        
     )
 }
 
