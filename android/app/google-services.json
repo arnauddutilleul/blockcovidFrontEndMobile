@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310903000314",
+    "project_id": "projetpfe-d5fae",
+    "storage_bucket": "projetpfe-d5fae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310903000314:android:4d25b5e3e6da731bcb8d43",
+        "android_client_info": {
+          "package_name": "com.blockcovidfrontendmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310903000314-iv6skcogjcpigh6onrohk072u34s1jbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwizLil88OTqMa50Gq3c0k0P_6FE4cItw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310903000314-iv6skcogjcpigh6onrohk072u34s1jbg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
