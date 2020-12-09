@@ -10,11 +10,6 @@
 import 'react-native-gesture-handler';
 import React, {Component,useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import LoginScreen from './screens/LoginScreen.js';
-import ScanScreen from './screens/ScanScreen.js';
-import DrawerContent from './navigators/DrawerContent';
 import MainStackNavigator from './navigators/MainStackNavigator';
 import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 import {
@@ -31,30 +26,17 @@ import {
 } from 'react-native';
 
 
-const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
-
-const App = () => {
-    const [isLoading,setIsLoading] = useState(true)
-    const [userToken, setUserToken] =useState(null)
-
-    // if(isLoading){
-    //     return(
-    //         <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-    //             <ActivityIndicator size="large"/>
-    //         </View>
-    //     )
-    // }
+class  App extends Component  {
 
 
-        return (
-            <NavigationContainer>
-                <Drawer.Navigator drawerContent={props => <DrawerContent{...props}/>}>
-                    <Drawer.Screen name="Login" component={LoginScreen}/>
-                    <Drawer.Screen name="Scan" component={ScanScreen}/>
-                </Drawer.Navigator>
-            </NavigationContainer>
-        );
+render(){
+    return (
+        <NavigationContainer>
+            <MainStackNavigator/>
+        </NavigationContainer>
+    );
+}
+
 
 }
 

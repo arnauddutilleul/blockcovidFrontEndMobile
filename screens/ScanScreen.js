@@ -1,41 +1,68 @@
 'use strict';
 
 import React from 'react';
+import DeviceInfo from 'react-native-device-info';
+import axios from 'axios';
 
 import {
     StyleSheet,
     Text,
     TouchableOpacity,
+    Alert,
 } from 'react-native';
 
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
+import {RNCamera} from 'react-native-camera';
 
-const ScanScreen = ({navigation, route}) =>{
-    let state = {
-        qr: '',
-    };
+const ScanScreen = ({navigation, route}) => {
+    let codeQR = '';
     let onRead = e => {
-        state.qr = e.data
-        console.log(state.qr)
+        codeQR = e.data;
+        console.log(codeQR);
+        axios.post('https://api-blockcovid.herokuapp.com/citoyen/scanne', {
+            idCitoyen: DeviceInfo.getUniqueId(),
+            idQrCode: codeQR,
+        })
+            .then(function (response) {
+                Alert.alert(
+                    'Code Scanned !',
+                    'You have just scanned a QR code (' + codeQR + ')',
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ],
+                    {cancelable: false},
+                );
+                console.log(response.status);
+            })
+            .catch(function (error) {
+                Alert.alert(
+                    'Server Error',
+                    'Please check with the developers',
+                    [
+                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ],
+                    {cancelable: false},
+                );
+                console.log(error);
+            });
     };
+
     return (
         <QRCodeScanner
             onRead={onRead}
             //flashMode={RNCamera.Constants.FlashMode.torch}
             topContent={
-                <Text style={styles.centerText}>Bienvenue sur BlockCovid</Text>
+                <Text style={styles.centerText}>Veuillez scanner un code QR</Text>
             }
             bottomContent={
-                <TouchableOpacity style={styles.buttonTouchable}>
-                    <Text>{state.qr}</Text>
-                </TouchableOpacity>
+                <Text>{codeQR}</Text>
             }
         />
-    )
+    );
 
-}
+
+};
 
 const styles = StyleSheet.create({
     centerText: {
@@ -55,6 +82,6 @@ const styles = StyleSheet.create({
     buttonTouchable: {
         padding: 16,
     },
-})
+});
 
-export default ScanScreen
+export default ScanScreen;
