@@ -7,6 +7,8 @@ import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 
 import org.reactnative.camera.RNCameraPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;  // <--- Import Package
+
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
