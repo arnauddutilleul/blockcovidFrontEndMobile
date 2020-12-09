@@ -67,7 +67,6 @@ const ConfirmationScreen = ({navigation}) => {
                 title="Je confirme ma participation"
                 onPress={onPress}
             />
-            <Text>Your ID is {DeviceInfo.getUniqueId()}</Text>
         </View>
 
 

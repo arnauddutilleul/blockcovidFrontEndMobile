@@ -17,6 +17,7 @@ import {RNCamera} from 'react-native-camera';
 
 const ScanScreen = ({navigation, route}) => {
     let codeQR = '';
+    let scanner = null;
     let onRead = e => {
         codeQR = e.data;
         console.log(codeQR);
@@ -29,7 +30,12 @@ const ScanScreen = ({navigation, route}) => {
                     'Code Scanned !',
                     'You have just scanned a QR code (' + codeQR + ')',
                     [
-                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        {
+                            text: 'OK', onPress: () => {
+                                scanner.reactivate();
+                                console.log('OK Pressed');
+                            },
+                        },
                     ],
                     {cancelable: false},
                 );
@@ -40,7 +46,12 @@ const ScanScreen = ({navigation, route}) => {
                     'Server Error',
                     'Please check with the developers',
                     [
-                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        {
+                            text: 'OK', onPress: () => {
+                                scanner.reactivate();
+                                console.log('OK Pressed');
+                            },
+                        },
                     ],
                     {cancelable: false},
                 );
@@ -50,6 +61,9 @@ const ScanScreen = ({navigation, route}) => {
 
     return (
         <QRCodeScanner
+            ref={(node) => {
+                scanner = node;
+            }}
             onRead={onRead}
             //flashMode={RNCamera.Constants.FlashMode.torch}
             topContent={
