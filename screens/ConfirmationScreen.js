@@ -17,13 +17,14 @@ import {
     Linking,
     Button,
 } from 'react-native';
+let STORAGE_KEY = '@storage_Key';
 
 
 const ConfirmationScreen = ({navigation}) => {
 
     const storeData = async (value) => {
         try {
-            await AsyncStorage.setItem('@storage_Key',value)
+            await AsyncStorage.setItem(STORAGE_KEY,value)
         } catch (e) {
             console.log('Error AsyncStorage.setItem :'+e)
         }

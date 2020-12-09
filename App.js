@@ -12,6 +12,7 @@ import React, {Component,useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import MainStackNavigator from './navigators/MainStackNavigator';
 import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
+
 import {
     AppRegistry,
     SafeAreaView,
@@ -29,7 +30,7 @@ import {
 class  App extends Component  {
 
 
-render(){
+    render() {
     return (
         <NavigationContainer>
             <MainStackNavigator/>
