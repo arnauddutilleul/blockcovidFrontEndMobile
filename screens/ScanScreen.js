@@ -7,7 +7,6 @@ import axios from 'axios';
 import {
     StyleSheet,
     Text,
-    TouchableOpacity,
     Alert,
 } from 'react-native';
 
@@ -15,9 +14,10 @@ import {
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 
-const ScanScreen = ({navigation, route}) => {
+const ScanScreen = ({route,navigation}) => {
     let codeQR = '';
     let scanner = null;
+
     let onRead = e => {
         codeQR = e.data;
         console.log(codeQR);
@@ -65,7 +65,6 @@ const ScanScreen = ({navigation, route}) => {
                 scanner = node;
             }}
             onRead={onRead}
-            //flashMode={RNCamera.Constants.FlashMode.torch}
             topContent={
                 <Text style={styles.centerText}>Veuillez scanner un code QR</Text>
             }

@@ -1,22 +1,15 @@
 'use strict';
 import 'react-native-gesture-handler';
-import React, {Component} from 'react';
+import React from 'react';
 import DeviceInfo from 'react-native-device-info';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import {
-    AppRegistry,
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
-    Text,
-    StatusBar,
-    TouchableOpacity,
-    Linking,
     Button,
 } from 'react-native';
+import iid from '@react-native-firebase/iid';
+
 let STORAGE_KEY = '@storage_Key';
 
 
@@ -30,22 +23,23 @@ const ConfirmationScreen = ({navigation}) => {
         }
     }
 
-    const onPress = () => {
-        console.log("hhhhhhhhh")
-        try{
+    const onPress = async () => {
+        const token = await iid().getToken();
+        console.log('Voici mon token : ' + token);
+        try {
             axios.post('https://api-blockcovid.herokuapp.com/citoyen/create', {
                 id: DeviceInfo.getUniqueId(),
+                fireBaseToken:token
             })
                 .then(function (response) {
-                    console.log("okokokokok")
                     storeData(DeviceInfo.getUniqueId())
-                    navigation.navigate('Scan', {name: 'Brandon'})
+                    navigation.navigate('Scan')
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-        }catch (e){
-            console.log("Errrrrrrror : "+e)
+        } catch (e) {
+            console.log("Errrrrrrror : " + e)
         }
 
     };
@@ -68,8 +62,6 @@ const ConfirmationScreen = ({navigation}) => {
                 onPress={onPress}
             />
         </View>
-
-
     );
 };
 
